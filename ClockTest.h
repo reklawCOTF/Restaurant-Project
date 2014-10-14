@@ -1,3 +1,5 @@
+//Tyler Thaxton
+
 #include <ctime>
 #include <iostream>
 #ifndef CLOCKTEST_CPP
