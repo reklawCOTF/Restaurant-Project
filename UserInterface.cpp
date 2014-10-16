@@ -14,6 +14,8 @@ using namespace std;
 
 void intro();
 void loginCheck();
+void clockInEmployee();
+void clockOutEmployee();
 void addNewEmployee();
 void addEmployee();
 void addManager();
@@ -58,13 +60,15 @@ void loginCheck()
     //checks whether an employee is manager or standard, checks permissions, then opens either employee menu or manager menu
     //for now, it is set to choose 1 or 2 for testing purposes
     int employeeType = 0;
-    cout << "Login to system as Employee, or Manager? Enter 1 for employee, 2 for manager." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
+    cout << "Login to system as Employee, or Manager? Enter 1 for employee, 2 for manager." << endl << endl "You can also enter 3 to clock in or out." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
     cin >> employeeType;
     switch(employeeType)
         {
         case 1: employeeLogin();
         break;
         case 2: managerLogin();
+        break;
+        case 3: clockMenu();
         break;
         case 9: intro();
         break;
@@ -75,8 +79,38 @@ void loginCheck()
 
     }
 
-
-
+void clockMenu()
+    {
+    system("CLS");
+    int clockType = 0;
+    cout << "Would you like to clock in or clock out?" << endl << endl << "Enter 1 to Clock in, or 2 to clock out." << endl << endl;
+    cin >> clockType;
+    switch (clockType)
+        {
+        case 1: clockInEmployee();
+        break;
+        case 2: clockOutEmployee();
+        break;
+        case 9: employeeMenu();
+        break;
+        default ErrorMessages(1);
+        break;
+    
+        }
+        
+    }
+    
+void clockInEmployee()
+    {
+    
+        
+    }
+    
+void clockOutEmployee()
+    {
+        
+    }
+    
 void addNewEmployee()
     {
     system("CLS");
