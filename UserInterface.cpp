@@ -104,8 +104,10 @@ void clockMenu()
 
 void clockInEmployee()
     {
-
-
+        system("CLS");
+        string userName = "";
+        cout << "Enter UserName: ";
+        cin >> userName;
     }
 
 void clockOutEmployee()
