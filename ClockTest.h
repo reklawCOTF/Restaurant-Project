@@ -19,7 +19,6 @@ public:
     {
         time_t timeIn = time(NULL); // http://en.cppreference.com/w/cpp/chrono/c/strftime02
         intTimeIn = timeIn;
-        time_t test = intTimeIn;
         char mbstr[100];
         if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeIn)))
         {

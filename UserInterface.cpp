@@ -108,11 +108,28 @@ void clockInEmployee()
         string userName = "";
         cout << "Enter UserName: ";
         cin >> userName;
+        time_t timeIn = time(NULL); // http://en.cppreference.com/w/cpp/chrono/c/strftime02
+        char mbstr[100];
+        if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeIn)))
+        {
+            cout << mbstr << endl;;
+        }
+
+
     }
 
 void clockOutEmployee()
     {
-
+        system("CLS");
+        string userName = "";
+        cout << "Enter UserName: ";
+        cin >> userName;
+        time_t timeOut = time(NULL); // http://en.cppreference.com/w/cpp/chrono/c/strftime02
+        char mbstr[100];
+        if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeOut)))
+        {
+            cout << mbstr << endl;;
+        }
     }
 
 void addNewEmployee()
