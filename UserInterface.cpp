@@ -14,11 +14,13 @@ using namespace std;
 
 void intro();
 void loginCheck();
+void clockMenu();
 void clockInEmployee();
 void clockOutEmployee();
 void addNewEmployee();
 void addEmployee();
 void addManager();
+void employeeMenu();
 void employeeLogin();
 void managerLogin();
 void employeeMainMenu();
@@ -60,7 +62,7 @@ void loginCheck()
     //checks whether an employee is manager or standard, checks permissions, then opens either employee menu or manager menu
     //for now, it is set to choose 1 or 2 for testing purposes
     int employeeType = 0;
-    cout << "Login to system as Employee, or Manager? Enter 1 for employee, 2 for manager." << endl << endl "You can also enter 3 to clock in or out." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
+    cout << "Login to system as Employee, or Manager? Enter 1 for employee, 2 for manager." << endl << endl << "You can also enter 3 to clock in or out." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
     cin >> employeeType;
     switch(employeeType)
         {
@@ -95,22 +97,22 @@ void clockMenu()
         break;
         default ErrorMessages(1);
         break;
-    
+
         }
-        
+
     }
-    
+
 void clockInEmployee()
     {
-    
-        
+
+
     }
-    
+
 void clockOutEmployee()
     {
-        
+
     }
-    
+
 void addNewEmployee()
     {
     system("CLS");
