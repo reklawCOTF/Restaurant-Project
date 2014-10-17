@@ -97,7 +97,7 @@ void clockMenu()
         break;
         default ErrorMessages(1);
         break;
-
+        loginCheck();
         }
 
     }
@@ -130,7 +130,9 @@ void clockOutEmployee()
         {
             cout << mbstr << endl;;
         }
+    
     }
+    
 
 void addNewEmployee()
     {
