@@ -11,7 +11,7 @@ void filemng::defaultnewfile(){ //creates a generic .txt file
     std::string temp;
     temp=" ";
     newfil.open("file.txt");
-    newfil<<temp;
+    newfil<<temp << endl;
     newfil.close();
 }
 void filemng::newfile(){ //asks user for the file name to create
@@ -30,7 +30,7 @@ void filemng::newfile(std::string inname){ //creates an empty file with user inp
     std::string temp;
     temp=" ";
     newfil.open(inname.c_str());
-    newfil<<temp;
+    newfil<<temp << std::endl;
     newfil.close();
 }
 void filemng::newfile(std::string inname, std::string lineone){ //adds a line

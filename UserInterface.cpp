@@ -78,7 +78,7 @@ void loginCheck()
         break;
         case 9: intro();
         break;
-        default: errorMessages(1);
+        default: errorMessages(1); loginCheck();
         break;
 
         }
@@ -153,19 +153,17 @@ void addNewEmployee()
     {
     system("CLS");
     int whichType = 0;
-    cout << "Would you like to add a new manager to the system, or a new standard employee?" << endl << endl << "Enter 1 to add a manager, or enter 2 to add an employee." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
-
+    cout << "Would you like to add a new standard employee to the system, or a new manager?" << endl << endl << "Enter 1 to add an employee, or enter 2 to add a manager." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
     cin >> whichType;
     switch (whichType)
         {
-        case 1: addManager();
+        case 1: addEmployee();
         break;
-        case 2: addEmployee();
+        case 2: addManager();
         break;
         case 9: intro();
         break;
-        default: errorMessages(1);
-                 addNewEmployee();
+        default: errorMessages(1); addNewEmployee();
         break;
         }
     }
@@ -182,7 +180,7 @@ void addEmployee()
     string fileName = "Employees/" + username + ".EMP";
     filemng EmployeeFile;
     EmployeeFile.newfile(fileName, username, password);
-    cout << "Employee added." << endl;
+    cout << endl << endl << "Employee added." << endl;
     Sleep(1400);
     intro();
     }
@@ -287,9 +285,9 @@ void managerMainMenu()
     {
     system("CLS");
     int scheduleOrCashier = 0;
-    cout << "Enter 1 to access the cashier menu, or enter 2 to view scheduling options." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
+    cout << "Enter 1 to access the cashier menu, enter 2 to view scheduling options, " << endl << endl << "Enter 3 to access inventory controls, or enter 4 to access food menu controls." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
     cin >> scheduleOrCashier;
-    switch(scheduleOrCashier)
+    switch (scheduleOrCashier)
         {
         case 1: cashierMenu();
         break;
@@ -371,9 +369,28 @@ void addMenuItem()
     string itemName = "";
     cout << "Enter Item Name";
     cin >> itemName;
-    string fileName = "Menu/" + itemName + ".MEN";
+    string fileName = "Menu/" + itemName + ".MNU";
     filemng menuFile;
+    menuFile.appin("Menu/MasterMenu.MNU", itemName);
     menuFile.newfile(fileName, itemName);
+    cout << "Enter 'stop' after all ingredients have been added." << endl << endl;
+    while (1)
+    {
+        string ingredient = "";
+        string amount = "";
+        cout<< "Enter Ingredient: ";
+        cin >> ingredient;
+        if (ingredient == "stop" || ingredient == "'stop'")
+        {
+            foodMenuControl();
+        }
+        cout << endl << "Enter Amount: ";
+        cin >> amount;
+        cout << endl << endl;
+        menuFile.appin(fileName, ingredient);
+        menuFile.appin(fileName, amount);
+    }
+
     }
 
 void foodMenuControl()
@@ -396,6 +413,8 @@ void displayCurrentFoodMenu()
     {
     //show the food menu that the user has compiled, next to a number for the user to specify. I guess it's a text file?
     cout << "FOOD MENU GRAPHIC HERE" << endl << endl;
+    Sleep(1300);
+    foodMenuControl();
     }
 
 
