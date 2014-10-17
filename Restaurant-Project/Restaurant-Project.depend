@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1413568213 source:c:\users\tyler\documents\github\restaurant-project\userinterface.cpp
+	<windows.h>
+	<stdlib.h>
+	<iostream>
+	"ClockTest.h"
+	"ErrorMessages.h"
+	"FileHandling.h"
+	"FileHandling.cpp"
+
+1413491417 c:\users\tyler\documents\github\restaurant-project\clocktest.h
+	<ctime>
+	<iostream>
+
+1413484684 c:\users\tyler\documents\github\restaurant-project\errormessages.h
+
+1413568137 c:\users\tyler\documents\github\restaurant-project\filehandling.h
+	<string>
+	<iostream>
+	<fstream>
+
+1413568137 c:\users\tyler\documents\github\restaurant-project\filehandling.cpp
+	<string>
+	<iostream>
+	<fstream>
+	<vector>
+
+1413568137 source:c:\users\tyler\documents\github\restaurant-project\filehandling.cpp
+	<string>
+	<iostream>
+	<fstream>
+	<vector>
+

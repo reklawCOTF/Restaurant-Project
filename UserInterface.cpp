@@ -10,6 +10,7 @@
 #include "ClockTest.h"
 #include "ErrorMessages.h"
 #include "FileHandling.h"
+#include "FileHandling.cpp"
 
 using namespace std;
 
@@ -87,7 +88,7 @@ void clockMenu()
     {
     system("CLS");
     int clockType = 0;
-    cout << "Would you like to clock in or clock out?" << endl << endl << "Enter 1 to Clock in, or 2 to clock out." << endl << endl;
+    cout << "Would you like to clock in or clock out?" << endl << endl << "Enter 1 to clock in, or 2 to clock out." << endl << endl;
     cin >> clockType;
     switch (clockType)
         {
@@ -95,9 +96,9 @@ void clockMenu()
         break;
         case 2: clockOutEmployee();
         break;
-        case 9: employeeMenu();
+        case 9: employeeMainMenu();
         break;
-        default ErrorMessages(1);
+        default: errorMessages(1);
         break;
         loginCheck();
         }
@@ -120,7 +121,9 @@ void clockInEmployee()
         }
         string clockTimeIn = mbstr;
         filemng fileClock;
-        fileClock.newfile(username, "Clocked In", clockTimeIn);
+        fileClock.appin(fileName, "Clocked In");
+        fileClock.appin(fileName, clockTimeIn);
+        loginCheck();
     }
 
 void clockOutEmployee()
@@ -130,6 +133,7 @@ void clockOutEmployee()
         cout << "Clock Out" << endl;
         cout << "Enter Username: ";
         cin >> username;
+        string fileName = username + ".clk";
         time_t timeOut = time(NULL);
         char mbstr[100];
         if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeOut)))
@@ -138,9 +142,11 @@ void clockOutEmployee()
         }
         string clockTimeOut = mbstr;
         filemng fileClock;
-        fileClock.(username, "Clocked In", clockTimeOut);
+        fileClock.appin(fileName, "Clocked Out");
+        fileClock.appin(fileName, clockTimeOut);
+        loginCheck();
     }
-    
+
 
 void addNewEmployee()
     {
@@ -293,12 +299,12 @@ void makeTransaction()
     void addMenuItem()
     {
         system("CLS");
-        filemng menuFile;
         string itemName = "";
         cout << "Enter Item Name";
         cin >> itemName;
-
+        filemng menuFile;
         menuFile.newfile(itemName, itemName);
+
 
     }
 

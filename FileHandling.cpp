@@ -1,4 +1,4 @@
-#include "filehandling.h"
+#include "FileHandling.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -6,7 +6,8 @@
 //using namespace std;
 filemng::filemng(){}
 filemng::~filemng(){}
-void filemng::defaultnewfile(){ //creates a generic .txt file
+
+ void filemng::defaultnewfile(){ //creates a generic .txt file
     std::ofstream newfil;
     std::string temp;
     temp=" ";
