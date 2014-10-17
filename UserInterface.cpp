@@ -99,7 +99,7 @@ void clockMenu()
         break;
         default ErrorMessages(1);
         break;
-
+        loginCheck();
         }
 
     }
@@ -140,6 +140,7 @@ void clockOutEmployee()
         filemng fileClock;
         fileClock.(username, "Clocked In", clockTimeOut);
     }
+    
 
 void addNewEmployee()
     {
