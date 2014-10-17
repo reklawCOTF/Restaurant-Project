@@ -1,4 +1,4 @@
-//Trevor Walker
+//Trevor Walker, Tyler Thaxton
 //10/8/14
 //CS240, Bowe
 //Group Project work
@@ -239,7 +239,7 @@ void employeeMainMenu()
 void managerMainMenu()
     {
     system("CLS");
-
+    int
     }
 
 void scheduleMenu()
@@ -282,25 +282,32 @@ void cashierMenu()
 void makeTransaction()
     {
     system("CLS");
-    float cashAmount = 0.0;
+    float cashGiven = 0.0;
+    float totalPrice = 0.0;
+    float changeToGive = 0.0;
     cout << "Subtotal is: -subtotal here-" << endl << endl;
     cout << "Enter cash given: ";
-    cin >> cashAmount;
-    cout << endl << endl << "Change owed to customer: -change amount here-" << endl << endl;
+    cin >> cashGiven;
+    changeToGive = cashGiven - totalPrice;
+    
+    
+    cout << endl << endl << "Change owed to customer: " << changeToGive << endl << endl;
+    Sleep(2500);
+    
     cashierMenu();
     }
 
     void addMenuItem()
-    {
+        {
         system("CLS");
         filemng menuFile;
         string itemName = "";
         cout << "Enter Item Name";
         cin >> itemName;
-
+        
         menuFile.newfile(itemName, itemName);
 
-    }
+        }
 
 void displayCurrentFoodMenu()
     {
