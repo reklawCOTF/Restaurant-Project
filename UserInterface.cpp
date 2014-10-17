@@ -33,7 +33,8 @@ void cashierMenu();
 void addMenuItem();
 void displayCurrentFoodMenu();
 void makeTransaction();
-
+void inventoryControl();
+void foodMenuControl();
 //written using restaurant flowchart as a guideline, JPEG is on github
 
 void intro()
@@ -107,44 +108,44 @@ void clockMenu()
 
 void clockInEmployee()
     {
-        system("CLS");
-        string username = "";
-        cout << "Clock In" << endl;
-        cout << "Enter Username: ";
-        cin >> username;
-        string fileName = username + ".clk";
-        time_t timeIn = time(NULL);
-        char mbstr[100];
-        if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeIn)))
-        {
-            cout << mbstr << endl;;
-        }
-        string clockTimeIn = mbstr;
-        filemng fileClock;
-        fileClock.appin(fileName, "Clocked In");
-        fileClock.appin(fileName, clockTimeIn);
-        loginCheck();
+    system("CLS");
+    string username = "";
+    cout << "Clock In" << endl;
+    cout << "Enter Username: ";
+    cin >> username;
+    string fileName = "Payroll/" + username + ".CLK";
+    time_t timeIn = time(NULL);
+    char mbstr[100];
+    if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeIn)))
+    {
+        cout << mbstr << endl;;
+    }
+    string clockTimeIn = mbstr;
+    filemng fileClock;
+    fileClock.appin(fileName, "Clocked In");
+    fileClock.appin(fileName, clockTimeIn);
+    loginCheck();
     }
 
 void clockOutEmployee()
     {
-        system("CLS");
-        string username = "";
-        cout << "Clock Out" << endl;
-        cout << "Enter Username: ";
-        cin >> username;
-        string fileName = username + ".clk";
-        time_t timeOut = time(NULL);
-        char mbstr[100];
-        if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeOut)))
-        {
-            cout << mbstr << endl;;
-        }
-        string clockTimeOut = mbstr;
-        filemng fileClock;
-        fileClock.appin(fileName, "Clocked Out");
-        fileClock.appin(fileName, clockTimeOut);
-        loginCheck();
+    system("CLS");
+    string username = "";
+    cout << "Clock Out" << endl;
+    cout << "Enter Username: ";
+    cin >> username;
+    string fileName ="Payroll/" + username + ".CLK";
+    time_t timeOut = time(NULL);
+    char mbstr[100];
+    if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeOut)))
+    {
+        cout << mbstr << endl;;
+    }
+    string clockTimeOut = mbstr;
+    filemng fileClock;
+    fileClock.appin(fileName, "Clocked Out");
+    fileClock.appin(fileName, clockTimeOut);
+    loginCheck();
     }
 
 
@@ -172,8 +173,15 @@ void addNewEmployee()
 void addEmployee()
     {
     system("CLS");
-    //function to add standard employee to system
-    //return to main menu after adding new employee
+    string username = "";
+    string password = "";
+    cout << "Enter Username: ";
+    cin >> username;
+    cout << endl << "Enter Password: ";
+    cin >> password;
+    string fileName = "Employees/" + username + ".EMP";
+    filemng EmployeeFile;
+    EmployeeFile.newfile(fileName, username, password);
     cout << "Employee added." << endl;
     Sleep(1400);
     intro();
@@ -182,9 +190,16 @@ void addEmployee()
 void addManager()
     {
     system("CLS");
-    //function to add Manager to system
-    //return to main menu after adding new manager
-    cout << "Manager added. Permissions granted." << endl;
+    string username = "";
+    string password = "";
+    cout << "Enter Username: ";
+    cin >> username;
+    cout << endl << "Enter Password: ";
+    cin >> password;
+    string fileName = "Managers/" + username + ".MAN";
+    filemng EmployeeFile;
+    EmployeeFile.newfile(fileName, username, password);
+    cout << "Manager added." << endl;
     Sleep(1400);
     intro();
 
@@ -193,17 +208,30 @@ void addManager()
 void employeeLogin()
     {
     system("CLS");
+
     string userName = "";
     string passWord = "";
     cout << "Enter UserName: ";
     cin >> userName;
     cout << endl << "Enter Password:  ";
     cin >> passWord;
-    cout << endl;
-    //needs to use Tyler's clock in class to clock in/out an employee and record the time in a text file, along with employee name. HELP ME TYLER
-    cout << "Logged in successfully." << endl << endl << "Welcome to RMS, -Insert Username Here-";
+    string fileName = "Employees/" + userName + ".EMP";
+    filemng employeeInfo;
+    string actualPassWord = employeeInfo.extractline(fileName,2);
+    if (passWord == actualPassWord)
+        {
+        system("CLS");
+        cout << "Logged in successfully." << endl << endl << "Welcome to RMS, " << userName << ".";
+        Sleep(1500);
+        employeeMainMenu();
+        }
+    else
+        {
+        system("CLS");
+        cout << "Login failed. Please try again, " << userName << ".";
+        loginCheck();
+        }
     Sleep(1200);
-    employeeMainMenu();
     }
 
 void managerLogin()
@@ -215,12 +243,25 @@ void managerLogin()
     cin >> userName;
     cout << endl << "Enter Password:  ";
     cin >> passWord;
+    string fileName = "Managers/" + userName + ".MAN";
+    filemng managerInfo;
+    string actualPassWord = managerInfo.extractline(fileName,2);
+    if (passWord == actualPassWord)
+        {
+        system("CLS");
+        cout << "Logged in successfully." << endl << endl << "Welcome to RMS, " << userName << ".";
+        Sleep(1500);
+        managerMainMenu();
+        }
+    else
+        {
+        system("CLS");
+        cout << "Login failed. Please try again, " << userName << ".";
+        loginCheck();
+        }
     cout << endl;
-    //needs to use Tyler's clock in class to clock in/out an employee and record the time in a text file, along with employee name. HELP ME TYLER
-    //needs to use an actual stored password, this is here merely for testing/menu navigation purposes.
-    cout << "Logged in successfully." << endl << endl << "Welcome to RMS, -Insert UserName Here-!";
+
     Sleep(1200);
-    managerMainMenu();
     }
 
 void employeeMainMenu()
@@ -237,7 +278,7 @@ void employeeMainMenu()
         break;
         case 9: intro();
         break;
-        default: errorMessages(1);
+        default: errorMessages(1); Sleep(1300); employeeMainMenu();
         break;
         }
     }
@@ -245,7 +286,24 @@ void employeeMainMenu()
 void managerMainMenu()
     {
     system("CLS");
-    int
+    int scheduleOrCashier = 0;
+    cout << "Enter 1 to access the cashier menu, or enter 2 to view scheduling options." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
+    cin >> scheduleOrCashier;
+    switch(scheduleOrCashier)
+        {
+        case 1: cashierMenu();
+        break;
+        case 2: scheduleMenu();
+        break;
+        case 3: inventoryControl();
+        break;
+        case 4: foodMenuControl();
+        break;
+        case 9: intro();
+        break;
+        default: errorMessages(1); Sleep(1300); managerMainMenu();
+        break;
+        }
     }
 
 void scheduleMenu()
@@ -285,6 +343,11 @@ void cashierMenu()
     makeTransaction();
     }
 
+void inventoryControl()
+    {
+    //inventory stuffs
+    }
+
 void makeTransaction()
     {
     system("CLS");
@@ -295,23 +358,41 @@ void makeTransaction()
     cout << "Enter cash given: ";
     cin >> cashGiven;
     changeToGive = cashGiven - totalPrice;
-    
-    
+
+
     cout << endl << endl << "Change owed to customer: " << changeToGive << endl << endl;
     Sleep(2500);
-    
+
     cashierMenu();
     }
 
-    void addMenuItem()
+void addMenuItem()
+    {
+    system("CLS");
+    string itemName = "";
+    cout << "Enter Item Name";
+    cin >> itemName;
+    string fileName = "Menu/" + itemName + ".MEN";
+    filemng menuFile;
+    menuFile.newfile(fileName, itemName);
+    }
+
+void foodMenuControl()
+    {
+    system("CLS");
+    int controlMenu = 0;
+    cout << "Enter 1 to display the current menu, or enter 2 to add an item to the menu." << endl << endl;
+    cin >> controlMenu;
+    switch (controlMenu)
         {
-        system("CLS");
-        string itemName = "";
-        cout << "Enter Item Name";
-        cin >> itemName;
-        filemng menuFile;
-        menuFile.newfile(itemName, itemName);
-    	}
+        case 1: displayCurrentFoodMenu();
+        break;
+        case 2: addMenuItem();
+        break;
+        default: managerMainMenu();
+        }
+
+    }
 
 void displayCurrentFoodMenu()
     {

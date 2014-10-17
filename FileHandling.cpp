@@ -178,13 +178,13 @@ void filemng::appin(){
     std::cout<<"what do you want to add at the end of the file"<<std::endl;
     std::cin>>input;
     file.open(infile.c_str(), std::ofstream::app);
-    file<<input;
+    file<<input << std::endl;
     file.close();
 }
 void filemng::appin(std::string infile, std::string input){
     std::ofstream file;
     file.open(infile.c_str(), std::ofstream::app);
-    file<<input;
+    file<<input << std::endl;
     file.close();
 }
 std::string filemng::filetostrlst(){
