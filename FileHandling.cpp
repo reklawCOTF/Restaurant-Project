@@ -1,4 +1,4 @@
-#include "FileHandling.h"
+#include "filehandling.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -6,8 +6,7 @@
 //using namespace std;
 filemng::filemng(){}
 filemng::~filemng(){}
-
- void filemng::defaultnewfile(){ //creates a generic .txt file
+void filemng::defaultnewfile(){ //creates a generic .txt file
     std::ofstream newfil;
     std::string temp;
     temp=" ";
@@ -16,7 +15,15 @@ filemng::~filemng(){}
     newfil.close();
 }
 void filemng::newfile(){ //asks user for the file name to create
-
+    std::string inname;
+    std::ofstream newfil;
+    std::string temp;
+    std::cout<<"What do you want to name your file?\n(include file extention)"<<std::endl;
+    std::cin>>inname;
+    temp=" ";
+    newfil.open(inname.c_str());
+    newfil<<temp;
+    newfil.close();
 }
 void filemng::newfile(std::string inname){ //creates an empty file with user inputed name and extension
     std::ofstream newfil;
@@ -27,18 +34,14 @@ void filemng::newfile(std::string inname){ //creates an empty file with user inp
     newfil.close();
 }
 void filemng::newfile(std::string inname, std::string lineone){ //adds a line
-
     std::ofstream newfilr;
     std::string temp;
-    temp=" ";
     newfilr.open(inname.c_str());
-    newfilr<<temp;
     newfilr<<lineone;
     newfilr.close();
 }
 void filemng::newfile(std::string inname, std::string lineone, std::string linetwo){//adds two lines
     std::ofstream newfil;
-    std::string temp;
     newfil.open(inname.c_str());
     newfil<<lineone;
     newfil<<std::endl;
@@ -47,7 +50,6 @@ void filemng::newfile(std::string inname, std::string lineone, std::string linet
 }
 void filemng::newfile(std::string inname, std::string lineone, std::string linetwo, std::string linethree){ //adds three lines
     std::ofstream newfil;
-    std::string temp;
     newfil.open(inname.c_str());
     newfil<<lineone;
     newfil<<std::endl;
@@ -58,26 +60,21 @@ void filemng::newfile(std::string inname, std::string lineone, std::string linet
 }
 void filemng::clrfile(){ //clears     a user inputed file
     std::ofstream file;
-    std::string temp;
     std::string infile;
-    temp=" ";
     std::cout<<"what is the name of the file?\n(include the file extension)\n";
     std::cin>>infile;
     file.open(infile.c_str());
-    file<<temp;
+    file<<" ";
     file.close();
 }
 void filemng::clrfile(std::string infile){
     std::ofstream file;
-    std::string temp;
-    temp=" ";
     file.open(infile.c_str());
-    file<<temp;
+    file<<" ";
     file.close();
 }
 void filemng::delfile(){ //deletes a user inputed file
      std::ofstream file;
-    std::string temp;
     std::string infile;
     std::cout<<"what is the name of the file to be deleted?\n(include the file extension)\n";
     std::cin>>infile;
@@ -87,7 +84,6 @@ void filemng::delfile(){ //deletes a user inputed file
 }
 void filemng::delfile(std::string infile){ //deletes a user defined file
     std::ofstream file;
-    std::string temp;
     file.open(infile.c_str());
     file.close();
     remove(infile.c_str());
@@ -178,13 +174,13 @@ void filemng::appin(){
     std::cout<<"what do you want to add at the end of the file"<<std::endl;
     std::cin>>input;
     file.open(infile.c_str(), std::ofstream::app);
-    file<<input << std::endl;
+    file<<input<<std::endl;
     file.close();
 }
 void filemng::appin(std::string infile, std::string input){
     std::ofstream file;
     file.open(infile.c_str(), std::ofstream::app);
-    file<<input << std::endl;
+    file<<input<<std::endl;
     file.close();
 }
 std::string filemng::filetostrlst(){
@@ -311,4 +307,5 @@ std::string filemng::extractmultilines(std::string infile, int startline, int en
     file.close();
     return result;
 }
+
 
