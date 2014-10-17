@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1413588551 source:c:\users\reklaw\documents\school\programming\c++\restaurantsystem\userinterface.cpp
+	<windows.h>
+	<stdlib.h>
+	<iostream>
+	"ClockTest.h"
+	"ErrorMessages.h"
+	"FileHandling.h"
+	"FileHandling.cpp"
+
+1413248723 c:\users\reklaw\documents\school\programming\c++\restaurantsystem\clocktest.h
+	<ctime>
+	<iostream>
+
+1413252425 c:\users\reklaw\documents\school\programming\c++\restaurantsystem\errormessages.h
+
+1413587813 c:\users\reklaw\documents\school\programming\c++\restaurantsystem\filehandling.h
+	<string>
+	<iostream>
+	<fstream>
+
+1413587813 c:\users\reklaw\documents\school\programming\c++\restaurantsystem\filehandling.cpp
+	"filehandling.h"
+	<string>
+	<iostream>
+	<fstream>
+	<vector>
+

@@ -359,7 +359,6 @@ void makeTransaction()
     cin >> cashGiven;
     changeToGive = cashGiven - totalPrice;
 
-
     cout << endl << endl << "Change owed to customer: " << changeToGive << endl << endl;
     Sleep(2500);
 
@@ -391,7 +390,6 @@ void foodMenuControl()
         break;
         default: managerMainMenu();
         }
-
     }
 
 void displayCurrentFoodMenu()
