@@ -9,6 +9,7 @@
 
 #include "ClockTest.h"
 #include "ErrorMessages.h"
+#include "FileHandling.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ void managerMainMenu();
 void scheduleMenu();
 void displaySchedule();
 void cashierMenu();
+void addMenuItem();
 void displayCurrentFoodMenu();
 void makeTransaction();
 
@@ -105,31 +107,38 @@ void clockMenu()
 void clockInEmployee()
     {
         system("CLS");
-        string userName = "";
-        cout << "Enter UserName: ";
-        cin >> userName;
-        time_t timeIn = time(NULL); // http://en.cppreference.com/w/cpp/chrono/c/strftime02
+        string username = "";
+        cout << "Clock In" << endl;
+        cout << "Enter Username: ";
+        cin >> username;
+        string fileName = username + ".clk";
+        time_t timeIn = time(NULL);
         char mbstr[100];
         if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeIn)))
         {
             cout << mbstr << endl;;
         }
-
-
+        string clockTimeIn = mbstr;
+        filemng fileClock;
+        fileClock.newfile(username, "Clocked In", clockTimeIn);
     }
 
 void clockOutEmployee()
     {
         system("CLS");
-        string userName = "";
-        cout << "Enter UserName: ";
-        cin >> userName;
-        time_t timeOut = time(NULL); // http://en.cppreference.com/w/cpp/chrono/c/strftime02
+        string username = "";
+        cout << "Clock Out" << endl;
+        cout << "Enter Username: ";
+        cin >> username;
+        time_t timeOut = time(NULL);
         char mbstr[100];
         if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeOut)))
         {
             cout << mbstr << endl;;
         }
+        string clockTimeOut = mbstr;
+        filemng fileClock;
+        fileClock.(username, "Clocked In", clockTimeOut);
     }
 
 void addNewEmployee()
@@ -278,6 +287,18 @@ void makeTransaction()
     cin >> cashAmount;
     cout << endl << endl << "Change owed to customer: -change amount here-" << endl << endl;
     cashierMenu();
+    }
+
+    void addMenuItem()
+    {
+        system("CLS");
+        filemng menuFile;
+        string itemName = "";
+        cout << "Enter Item Name";
+        cin >> itemName;
+
+        menuFile.newfile(itemName, itemName);
+
     }
 
 void displayCurrentFoodMenu()
