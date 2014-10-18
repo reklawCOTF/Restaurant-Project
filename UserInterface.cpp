@@ -56,6 +56,7 @@ void intro()
         case 2: loginCheck();
         break;
         default: errorMessages(1);
+                 intro();
         break;
         }
     }
@@ -99,7 +100,7 @@ void clockMenu()
         break;
         case 9: employeeMainMenu();
         break;
-        default: errorMessages(1);
+        default: errorMessages(1); clockMenu();
         break;
         loginCheck();
         }
@@ -124,6 +125,7 @@ void clockInEmployee()
     filemng fileClock;
     fileClock.appin(fileName, "Clocked In");
     fileClock.appin(fileName, clockTimeIn);
+    cout << username << ", you have successfully clocked in." << endl;
     loginCheck();
     }
 
@@ -180,6 +182,7 @@ void addEmployee()
     string fileName = "Employees/" + username + ".EMP";
     filemng EmployeeFile;
     EmployeeFile.newfile(fileName, username, password);
+    system("CLS");
     cout << endl << endl << "Employee added." << endl;
     Sleep(1400);
     intro();
@@ -197,6 +200,7 @@ void addManager()
     string fileName = "Managers/" + username + ".MAN";
     filemng EmployeeFile;
     EmployeeFile.newfile(fileName, username, password);
+    system("CLS");
     cout << "Manager added." << endl;
     Sleep(1400);
     intro();
@@ -211,7 +215,7 @@ void employeeLogin()
     string passWord = "";
     cout << "Enter UserName: ";
     cin >> userName;
-    cout << endl << "Enter Password:  ";
+    cout << endl << "Enter Password: ";
     cin >> passWord;
     string fileName = "Employees/" + userName + ".EMP";
     filemng employeeInfo;
@@ -227,6 +231,7 @@ void employeeLogin()
         {
         system("CLS");
         cout << "Login failed. Please try again, " << userName << ".";
+        Sleep(1500);
         loginCheck();
         }
     Sleep(1200);
@@ -239,7 +244,7 @@ void managerLogin()
     string passWord = "";
     cout << "Enter UserName: ";
     cin >> userName;
-    cout << endl << "Enter Password:  ";
+    cout << endl << "Enter Password: ";
     cin >> passWord;
     string fileName = "Managers/" + userName + ".MAN";
     filemng managerInfo;
@@ -255,6 +260,7 @@ void managerLogin()
         {
         system("CLS");
         cout << "Login failed. Please try again, " << userName << ".";
+        Sleep(1500);
         loginCheck();
         }
     cout << endl;
@@ -306,12 +312,13 @@ void managerMainMenu()
 
 void scheduleMenu()
     {
-    //schedule menu must be here
+    cout << "Error. Returning to previous menu....";
+    Sleep(1500);
     }
 
 void displaySchedule()
     {
-    //display schedule
+    intro();
     }
 
 void cashierMenu()
@@ -367,13 +374,14 @@ void addMenuItem()
     {
     system("CLS");
     string itemName = "";
-    cout << "Enter Item Name";
+    cout << "This utility is used to add new items to the restaurant's menu." << endl << endl << "Enter Item Name: ";
     cin >> itemName;
     string fileName = "Menu/" + itemName + ".MNU";
     filemng menuFile;
     menuFile.appin("Menu/MasterMenu.MNU", itemName);
-    menuFile.newfile(fileName, itemName);
-    cout << "Enter 'stop' after all ingredients have been added." << endl << endl;
+    menuFile.newfile(fileName, "");
+
+    cout << endl << endl << "Please enter the ingredients the menu item contains, one at a time, with no spaces in the item name." << endl << endl << "Enter 'stop' after all ingredients have been added. Remember not to use spaces in any of your entries, please." << endl << endl;
     while (1)
     {
         string ingredient = "";
@@ -397,7 +405,7 @@ void foodMenuControl()
     {
     system("CLS");
     int controlMenu = 0;
-    cout << "Enter 1 to display the current menu, or enter 2 to add an item to the menu." << endl << endl;
+    cout << "Enter 1 to display the current menu, or enter 2 to add an item to the menu." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
     cin >> controlMenu;
     switch (controlMenu)
         {
@@ -412,6 +420,7 @@ void foodMenuControl()
 void displayCurrentFoodMenu()
     {
     //show the food menu that the user has compiled, next to a number for the user to specify. I guess it's a text file?
+    system("CLS");
     cout << "FOOD MENU GRAPHIC HERE" << endl << endl;
     Sleep(1300);
     foodMenuControl();
