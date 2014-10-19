@@ -1,4 +1,3 @@
-
 #ifndef FILEHANDLING_H
 #define FILEHANDLING_H
 
@@ -8,7 +7,7 @@
 
 
 
-//using namespace t
+//using namespace std
 class filemng
 {
     public:

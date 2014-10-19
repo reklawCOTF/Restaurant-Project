@@ -1,6 +1,10 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
+
 #include "filehandling.h"
+
+#include <string>
+
 class inventory
 {
 public:
