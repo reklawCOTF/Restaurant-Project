@@ -4,8 +4,6 @@
 #include <fstream>
 #include <vector>
 //using namespace std;
-
-
 filemng::filemng(){}
 filemng::~filemng(){}
 void filemng::defaultnewfile(){ //creates a generic .txt file
