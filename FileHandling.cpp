@@ -3,13 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-<<<<<<< HEAD
 
 //using namespace std;
 
-=======
-//using namespace std;
->>>>>>> 59c029dba74108c3c3f730de45c36faac37be4a5
 filemng::filemng(){}
 filemng::~filemng(){}
 void filemng::defaultnewfile(){ //creates a generic .txt file
