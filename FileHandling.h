@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-//using namespace std;
+//using namespace t
 class filemng
 {
     public:
@@ -33,11 +33,9 @@ class filemng
     std::string extractline(std::string, int);
     std::string extractmultilines();
     std::string extractmultilines(std::string, int, int);
+    int filesize();
+    int filesize(std::string);
     private:
 };
 
-
-
-
 #endif // FILEHANDLING_H
-
