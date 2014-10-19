@@ -6,6 +6,7 @@
 #include<windows.h>
 #include<stdlib.h>
 #include <iostream>
+#include <sstream>
 
 #include "ClockTest.h"
 #include "ErrorMessages.h"
@@ -419,10 +420,26 @@ void foodMenuControl()
 
 void displayCurrentFoodMenu()
     {
-    //show the food menu that the user has compiled, next to a number for the user to specify. I guess it's a text file?
     system("CLS");
-    cout << "FOOD MENU GRAPHIC HERE" << endl << endl;
+    filemng MenuFile;
+    int itemNumber = 1;
+    cout << "Current Menu" << endl;
+    while (1)
+    {
+        string item = MenuFile.extractline("Menu/MasterMenu.MNU",itemNumber);
+        if (item == "")
+        {
+            break;
+        }
+        ostringstream convert;
+        convert << itemNumber;
+        string itemNumberString = convert.str();
+        item = itemNumberString + "-" + item;
+        cout << item << endl;
+        itemNumber ++;
+    }
     Sleep(1300);
+    cin >> itemNumber;
     foodMenuControl();
     }
 
