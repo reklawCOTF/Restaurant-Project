@@ -10,7 +10,6 @@
 
 #include "ClockTest.h"
 #include "ErrorMessages.h"
-#include "FileHandling.h"
 #include "FileHandling.cpp"
 
 using namespace std;

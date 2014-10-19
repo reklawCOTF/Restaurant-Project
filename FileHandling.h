@@ -1,8 +1,13 @@
+
 #ifndef FILEHANDLING_H
 #define FILEHANDLING_H
+
 #include <string>
 #include <iostream>
 #include <fstream>
+
+
+
 //using namespace t
 class filemng
 {

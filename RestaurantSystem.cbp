@@ -32,8 +32,14 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="ClockTest.h" />
+		<Unit filename="Encryption.cpp" />
+		<Unit filename="Encryption.h" />
 		<Unit filename="ErrorMessages.h" />
 		<Unit filename="UserInterface.cpp" />
+		<Unit filename="filehandling.cpp" />
+		<Unit filename="filehandling.h" />
+		<Unit filename="inventory.cpp" />
+		<Unit filename="inventory.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
