@@ -439,7 +439,6 @@ void displayCurrentFoodMenu()
         itemNumber ++;
     }
     Sleep(1300);
-    cin >> itemNumber;
     foodMenuControl();
     }
 
