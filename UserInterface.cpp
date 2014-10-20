@@ -32,7 +32,7 @@ void displaySchedule();
 void cashierMenu();
 void addMenuItem();
 void displayCurrentFoodMenu();
-void makeTransaction();
+
 void inventoryControl();
 void foodMenuControl();
 //written using restaurant flowchart as a guideline, JPEG is on github
@@ -126,6 +126,7 @@ void clockInEmployee()
     fileClock.appin(fileName, "Clocked In");
     fileClock.appin(fileName, clockTimeIn);
     cout << username << ", you have successfully clocked in." << endl;
+    Sleep(1200);
     loginCheck();
     }
 
@@ -134,7 +135,7 @@ void clockOutEmployee()
     system("CLS");
     string username = "";
     cout << "Clock Out" << endl;
-    cout << "Enter Username: ";
+    cout << "Enter Username (Employee must be : ";
     cin >> username;
     string fileName ="Payroll/" + username + ".CLK";
     time_t timeOut = time(NULL);
@@ -147,6 +148,8 @@ void clockOutEmployee()
     filemng fileClock;
     fileClock.appin(fileName, "Clocked Out");
     fileClock.appin(fileName, clockTimeOut);
+    cout << username << ", you have successfully clocked out. " << endl;
+    Sleep(1200);
     loginCheck();
     }
 
@@ -290,10 +293,10 @@ void employeeMainMenu()
 void managerMainMenu()
     {
     system("CLS");
-    int scheduleOrCashier = 0;
+    int menuType = 0;
     cout << "Enter 1 to access the cashier menu, enter 2 to view scheduling options, " << endl << endl << "Enter 3 to access inventory controls, or enter 4 to access food menu controls." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
-    cin >> scheduleOrCashier;
-    switch (scheduleOrCashier)
+    cin >> menuType;
+    switch (menuType)
         {
         case 1: cashierMenu();
         break;
@@ -312,7 +315,7 @@ void managerMainMenu()
 
 void scheduleMenu()
     {
-
+    managerMainMenu();
     }
 
 void displaySchedule()
@@ -327,27 +330,52 @@ void cashierMenu()
     {
     system("CLS");
     int addThisItem = 0;
-    //Cashier Menu - alot of work to do here
-    cout << "Enter the corresponding number to add an item to the current total purchase." << endl << endl;
-    displayCurrentFoodMenu();
-    cin >> addThisItem;
-    cout << endl << endl;
-    //needs running sum that is always displayed with every new addition
-    //needs option to void item with proper manager username and password
-    cout << "Subtotal: DISPLAY SUBTOTAL HERE" << endl << endl;
-    cout << "Items on order: DISPLAY CURRENTLY SELECTED PURCHASES HERE" << endl << endl;
-    //make a while loop that goes as long as the user chooses to add more items to the order.
-    // needs to encapsulate entire function, pretty much
-    //while (userChoice != -done-)
-    //  {
-    //  enter another order
-    //  add to subtotal
-    //  ask if user wants another order
-    //  change exit variable and exit loop if they don't
-    //  keep loop going if not
-    //  makeTransaction();
-    //  }
-    makeTransaction();
+    float subTotal = 0.0;
+    float temp = 0.0;
+    float givenByCustomer = 0.0;
+    float customerChange = 0.0;
+    int ringComplete = 1;
+    int leaveOrRepeat = 0;
+    float getTax = 0.0;
+    while (ringComplete == 1)
+        {
+        cout << "Current Subtotal: " << subTotal << endl << endl;
+        displayCurrentFoodMenu();
+        cout << endl << "Enter the corresponding number to add an item to the current total purchase: ";
+        cin >> addThisItem;
+        cout << endl << endl << "Enter item price: ";
+        cin >> temp;
+        subTotal = subTotal + temp;
+        cout << endl << "New Subtotal: " << subTotal << endl << endl;
+        cout << "Enter 1 to add another purchase to the current order, or enter 2 to complete transaction." << endl << endl;
+        cin >> ringComplete;
+        cout << endl << endl;
+        temp = 0.0;
+        system("CLS");
+        }
+    system("CLS");
+    getTax = subTotal * 0.06;
+    subTotal = subTotal + getTax;
+    cout << "Post-tax Final Subtotal: " << subTotal << endl << endl;
+    cout << "Enter cash amount given by customer: ";
+    cin >> givenByCustomer;
+    customerChange = givenByCustomer - subTotal;
+    cout << endl << endl << "Change owed: " <<  customerChange;
+    Sleep(1800);
+    getTax = 0.0;
+    subTotal = 0.0;
+
+    cout << endl << endl << "Enter 1 to make another transaction, or enter any other number to return to the login menu: ";
+    cin >> leaveOrRepeat;
+    if (leaveOrRepeat == 1)
+        {
+        system("CLS");
+        cashierMenu();
+        }
+    else
+        {
+        loginCheck();
+        }
     }
 
 void inventoryControl()
@@ -355,28 +383,13 @@ void inventoryControl()
     //inventory stuffs
     }
 
-void makeTransaction()
-    {
-    system("CLS");
-    float cashGiven = 0.0;
-    float totalPrice = 0.0;
-    float changeToGive = 0.0;
-    cout << "Subtotal is: -subtotal here-" << endl << endl;
-    cout << "Enter cash given: ";
-    cin >> cashGiven;
-    changeToGive = cashGiven - totalPrice;
 
-    cout << endl << endl << "Change owed to customer: " << changeToGive << endl << endl;
-    Sleep(2500);
-
-    cashierMenu();
-    }
 
 void addMenuItem()
     {
     system("CLS");
     string itemName = "";
-    cout << "This utility is used to add new items to the restaurant's menu." << endl << endl << "Enter Item Name: ";
+    cout << "This utility is used to add new items to the restaurant's menu." << endl << endl << "Include no spaces in your entry name. Enter Item Name: ";
     cin >> itemName;
     string fileName = "Menu/" + itemName + ".MNU";
     filemng menuFile;
@@ -392,6 +405,8 @@ void addMenuItem()
         cin >> ingredient;
         if (ingredient == "stop" || ingredient == "'stop'")
         {
+            cout << "Menu item added." << endl << endl;
+            Sleep (1000);
             foodMenuControl();
         }
         cout << endl << "Enter Amount: ";
@@ -421,10 +436,9 @@ void foodMenuControl()
 
 void displayCurrentFoodMenu()
     {
-    system("CLS");
     filemng MenuFile;
     int itemNumber = 1;
-    cout << "Current Menu" << endl;
+    cout << endl << "Current Menu" << endl;
     while (1)
     {
         string item = MenuFile.extractline("Menu/MasterMenu.MNU",itemNumber);
@@ -440,7 +454,6 @@ void displayCurrentFoodMenu()
         itemNumber ++;
     }
     Sleep(1300);
-    foodMenuControl();
     }
 
 
