@@ -312,13 +312,15 @@ void managerMainMenu()
 
 void scheduleMenu()
     {
-    cout << "Error. Returning to previous menu....";
-    Sleep(1500);
+
     }
 
 void displaySchedule()
     {
-    intro();
+    system("CLS");
+    string userName = "";
+    cout << "Enter your username to display current schedule." << endl << endl;
+    cin >> userName;
     }
 
 void cashierMenu()
