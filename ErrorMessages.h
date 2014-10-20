@@ -2,7 +2,7 @@
 //Error Messages
 
 #ifndef ERRORMESSAGES_H
-
+#define ERRORMESSAGES_H
 
 using namespace std;
 
