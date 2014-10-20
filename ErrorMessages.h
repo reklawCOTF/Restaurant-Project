@@ -4,7 +4,6 @@
 #ifndef ERRORMESSAGES_H
 #define ERRORMESSAGES_H
 #include <iostream>
-using namespace std;
 
 void errorMessages(int messageNum);
 
