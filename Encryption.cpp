@@ -1,3 +1,4 @@
+//Robert Gunther
 #include "Encryption.h"
 #include <iostream>
 #include <string>
