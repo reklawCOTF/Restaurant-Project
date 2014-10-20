@@ -35,11 +35,15 @@
 		<Unit filename="Encryption.cpp" />
 		<Unit filename="Encryption.h" />
 		<Unit filename="ErrorMessages.h" />
+		<Unit filename="Scheduling.cpp" />
+		<Unit filename="Scheduling.h" />
 		<Unit filename="UserInterface.cpp" />
 		<Unit filename="filehandling.cpp" />
 		<Unit filename="filehandling.h" />
 		<Unit filename="inventory.cpp" />
 		<Unit filename="inventory.h" />
+		<Unit filename="passwordsystem.cpp" />
+		<Unit filename="passwordsystem.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -126,11 +126,7 @@ void clockInEmployee()
     fileClock.appin(fileName, "Clocked In");
     fileClock.appin(fileName, clockTimeIn);
     cout << username << ", you have successfully clocked in." << endl;
-<<<<<<< HEAD
-    Sleep(1200);
-=======
     Sleep(1400);
->>>>>>> 51be2545686fa7361e67d1e7393acacc1a18c205
     loginCheck();
     }
 
@@ -152,13 +148,8 @@ void clockOutEmployee()
     filemng fileClock;
     fileClock.appin(fileName, "Clocked Out");
     fileClock.appin(fileName, clockTimeOut);
-<<<<<<< HEAD
     cout << username << ", you have successfully clocked out. " << endl;
-    Sleep(1200);
-=======
-    cout << username << ", you have successfully clocked out." << endl;
     Sleep(1400);
->>>>>>> 51be2545686fa7361e67d1e7393acacc1a18c205
     loginCheck();
     }
 
