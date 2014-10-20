@@ -7,8 +7,8 @@
 #include<stdlib.h>
 #include <iostream>
 #include <sstream>
+#include <ctime>
 
-#include "ClockTest.h"
 #include "ErrorMessages.h"
 #include "FileHandling.h"
 
@@ -126,6 +126,7 @@ void clockInEmployee()
     fileClock.appin(fileName, "Clocked In");
     fileClock.appin(fileName, clockTimeIn);
     cout << username << ", you have successfully clocked in." << endl;
+    Sleep(1400);
     loginCheck();
     }
 
@@ -147,6 +148,8 @@ void clockOutEmployee()
     filemng fileClock;
     fileClock.appin(fileName, "Clocked Out");
     fileClock.appin(fileName, clockTimeOut);
+    cout << username << ", you have successfully clocked out." << endl;
+    Sleep(1400);
     loginCheck();
     }
 
