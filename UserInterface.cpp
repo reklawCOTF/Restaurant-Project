@@ -111,10 +111,13 @@ void clockInEmployee()
     {
     system("CLS");
     string username = "";
+    string passWord = "";
     cout << "Clock In" << endl;
     cout << "Enter Username: ";
     cin >> username;
-    string fileName = "Payroll/" + username + ".CLK";
+    cout << endl << "Enter Password: ";
+    cin >> passWord;
+    string fileNamePayroll = "Payroll/" + username + ".CLK";
     time_t timeIn = time(NULL);
     char mbstr[100];
     if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeIn)))
@@ -123,9 +126,42 @@ void clockInEmployee()
     }
     string clockTimeIn = mbstr;
     filemng fileClock;
+<<<<<<< HEAD
     fileClock.appin(fileName, "Clocked In");
     fileClock.appin(fileName, clockTimeIn);
     cout << username << ", you have successfully clocked in." << endl;
+=======
+    string fileNameEmployee = "Employees/" + username + ".EMP";
+    string actualPassWord = fileClock.extractline(fileNameEmployee, 2);
+    if (passWord == actualPassWord)
+        {
+        fileClock.appin(fileNamePayroll, "Clocked In");
+        fileClock.appin(fileNamePayroll, clockTimeIn);
+        cout << username << ", you have successfully clocked in.";
+        Sleep(1500);
+        loginCheck();
+        }
+    else
+        {
+            string fileNameManager = "Managers/" + username + ".MAN";
+            string actualPassWord = fileClock.extractline(fileNameManager, 2);
+        if (passWord == actualPassWord)
+            {
+            fileClock.appin(fileNamePayroll, "Clocked In");
+            fileClock.appin(fileNamePayroll, clockTimeIn);
+            cout << username << ", you have successfully clocked in.";
+            Sleep(1500);
+            loginCheck();
+            }
+        else
+            {
+            cout << "Clock In Failed. Please try again, " << username << ".";
+            Sleep(1500);
+            loginCheck();
+            }
+        }
+
+>>>>>>> 18395bbdd7f02636789664c398596476314efa85
     Sleep(1400);
     loginCheck();
     }
@@ -134,10 +170,13 @@ void clockOutEmployee()
     {
     system("CLS");
     string username = "";
+    string passWord = "";
     cout << "Clock Out" << endl;
-    cout << "Enter Username (Employee must be : ";
+    cout << "Enter Username: ";
     cin >> username;
-    string fileName ="Payroll/" + username + ".CLK";
+    cout << endl << "Enter Password: ";
+    cin >> passWord;
+    string fileNamePayroll ="Payroll/" + username + ".CLK";
     time_t timeOut = time(NULL);
     char mbstr[100];
     if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeOut)))
@@ -145,12 +184,46 @@ void clockOutEmployee()
         cout << mbstr << endl;;
     }
     string clockTimeOut = mbstr;
+<<<<<<< HEAD
     filemng fileClock;
     fileClock.appin(fileName, "Clocked Out");
     fileClock.appin(fileName, clockTimeOut);
     cout << username << ", you have successfully clocked out. " << endl;
     Sleep(1400);
     loginCheck();
+=======
+        filemng fileClock;
+    string fileNameEmployee = "Employees/" + username + ".EMP";
+    string actualPassWord = fileClock.extractline(fileNameEmployee, 2);
+    if (passWord == actualPassWord)
+        {
+        fileClock.appin(fileNamePayroll, "Clocked Out");
+        fileClock.appin(fileNamePayroll, clockTimeOut);
+        cout << username << ", you have successfully clocked out.";
+        Sleep(1500);
+        loginCheck();
+        }
+    else
+        {
+            string fileNameManager = "Managers/" + username + ".MAN";
+            string actualPassWord = fileClock.extractline(fileNameManager, 2);
+        if (passWord == actualPassWord)
+            {
+            fileClock.appin(fileNamePayroll, "Clocked Out");
+            fileClock.appin(fileNamePayroll, clockTimeOut);
+            cout << username << ", you have successfully clocked out.";
+            Sleep(1500);
+            loginCheck();
+            }
+        else
+            {
+            cout << "Clock Out Failed. Please try again, " << username << ".";
+            Sleep(1500);
+            loginCheck();
+            }
+
+        }
+>>>>>>> 18395bbdd7f02636789664c398596476314efa85
     }
 
 
@@ -187,7 +260,7 @@ void addEmployee()
     EmployeeFile.newfile(fileName, username, password);
     system("CLS");
     cout << endl << endl << "Employee added." << endl;
-    Sleep(1400);
+    Sleep(1200);
     intro();
     }
 
