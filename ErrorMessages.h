@@ -3,7 +3,7 @@
 
 #ifndef ERRORMESSAGES_H
 #define ERRORMESSAGES_H
-
+#include <iostream>
 using namespace std;
 
 void errorMessages(int messageNum);
@@ -12,20 +12,16 @@ void errorMessages(int messageNum)
     {
     switch (messageNum)
         {
-    case 1: cout << "Invalid entry. Please try again." << endl;
+    case 1: std::cout << "Invalid entry. Please try again." << std::endl;
         break;
-    case 2: cout << "You do not have the necessary permissions to execute that command. Please try again." << endl;
+    case 2: std::cout << "You do not have the necessary permissions to execute that command. Please try again." << std::endl;
         break;
-    case 3: cout << "ERRORMESSAGE" << endl;
+    case 3: std::cout << "ERRORMESSAGE" << std::endl;
         break;
-    case 4: cout << "ERRORMESSAGE" << endl;
+    case 4: std::cout << "ERRORMESSAGE" << std::endl;
         break;
-    default: cout << "Unknown error has occured. Please try again." << endl;
+    default: std::cout << "Unknown error has occured. Please try again." << std::endl;
         break;
         }
     }
-
-
-
-
 #endif // ERRORMESSAGES_H
