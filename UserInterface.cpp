@@ -11,6 +11,7 @@
 
 #include "ErrorMessages.h"
 #include "FileHandling.h"
+#include "Scheduling.h"
 
 using namespace std;
 
@@ -122,7 +123,7 @@ void clockInEmployee()
     char mbstr[100];
     if (strftime(mbstr, sizeof(mbstr), "%A %c", localtime(&timeIn)))
     {
-        cout << mbstr << endl;;
+        cout << mbstr << endl;
     }
     string clockTimeIn = mbstr;
     filemng fileClock;
@@ -381,20 +382,23 @@ void scheduleMenu()
     cin>>choice;
     switch (choice)
     {
-        case: 1
+        case 1:
         sch.newschedule();
         break;
-        case: 2
+        case 2:
         sch.addworkday();
         break;
-        case: 3
+        case 3:
         sch.clrschedule();
         break;
-        case: 4
+        case 4:
         sch.delschedule();
         break;
-        case: 5
+        case 5:
         sch.viewschedule();
+        break;
+        default:
+        errorMessages(1);
     }
     managerMainMenu();
     }
@@ -502,12 +506,16 @@ void addMenuItem()
 void foodMenuControl()
     {
     system("CLS");
+    int menuReturn = 0;
     int controlMenu = 0;
     cout << "Enter 1 to display the current menu, or enter 2 to add an item to the menu." << endl << endl << "Remember, you can enter 9 on any menu to return to the main menu." << endl << endl;
     cin >> controlMenu;
     switch (controlMenu)
         {
         case 1: displayCurrentFoodMenu();
+        cout << endl << endl << "Enter any number to return to the main menu." << endl;
+        cin >> menuReturn;
+        managerMainMenu();
         break;
         case 2: addMenuItem();
         break;
@@ -534,7 +542,6 @@ void displayCurrentFoodMenu()
         cout << item << endl;
         itemNumber ++;
     }
-    Sleep(1300);
     }
 
 
