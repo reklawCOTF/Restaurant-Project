@@ -374,6 +374,28 @@ void managerMainMenu()
 
 void scheduleMenu()
     {
+     int choice;
+    schedule sch;
+    cout<<"Enter 1 to create a new schedule"<<endl<<"Enter 2 to add a workday to a user"<<endl;
+    cout<<"Enter 3 to clear a schedule"<<endl<<"Enter 4 to delete a schedule"<<"Enter 5 to view a schedule"<<endl;
+    cin>>choice;
+    switch (choice)
+    {
+        case: 1
+        sch.newschedule();
+        break;
+        case: 2
+        sch.addworkday();
+        break;
+        case: 3
+        sch.clrschedule();
+        break;
+        case: 4
+        sch.delschedule();
+        break;
+        case: 5
+        sch.viewschedule();
+    }
     managerMainMenu();
     }
 
