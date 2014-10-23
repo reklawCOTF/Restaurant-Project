@@ -126,11 +126,6 @@ void clockInEmployee()
     }
     string clockTimeIn = mbstr;
     filemng fileClock;
-<<<<<<< HEAD
-    fileClock.appin(fileName, "Clocked In");
-    fileClock.appin(fileName, clockTimeIn);
-    cout << username << ", you have successfully clocked in." << endl;
-=======
     string fileNameEmployee = "Employees/" + username + ".EMP";
     string actualPassWord = fileClock.extractline(fileNameEmployee, 2);
     if (passWord == actualPassWord)
@@ -161,7 +156,6 @@ void clockInEmployee()
             }
         }
 
->>>>>>> 18395bbdd7f02636789664c398596476314efa85
     Sleep(1400);
     loginCheck();
     }
@@ -184,14 +178,6 @@ void clockOutEmployee()
         cout << mbstr << endl;;
     }
     string clockTimeOut = mbstr;
-<<<<<<< HEAD
-    filemng fileClock;
-    fileClock.appin(fileName, "Clocked Out");
-    fileClock.appin(fileName, clockTimeOut);
-    cout << username << ", you have successfully clocked out. " << endl;
-    Sleep(1400);
-    loginCheck();
-=======
         filemng fileClock;
     string fileNameEmployee = "Employees/" + username + ".EMP";
     string actualPassWord = fileClock.extractline(fileNameEmployee, 2);
@@ -223,7 +209,7 @@ void clockOutEmployee()
             }
 
         }
->>>>>>> 18395bbdd7f02636789664c398596476314efa85
+
     }
 
 
